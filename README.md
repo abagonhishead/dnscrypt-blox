@@ -58,4 +58,5 @@ Full documentation can be found on the project wiki here: https://github.com/DNS
 For documentation on the dnscrypt-proxy-docker container, including how to use readiness/liveness probes, see Kyle Harding's repo here: https://github.com/klutchell/dnscrypt-proxy-docker
 
 ## TODO
+- Build automation
 - It'd be useful if it updated the blocking lists once a day or something. Unfortunately I haven't figured out how to get a cron job to run on a Chainguard image yet, and using a background script or something feels messy. For now it'll just need a weekly rebuild or something.
