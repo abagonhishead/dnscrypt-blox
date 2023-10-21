@@ -61,6 +61,9 @@ For documentation on the dnscrypt-proxy-docker container, including how to use r
 - Kyle Harding's [dnscrypt-proxy-docker](https://github.com/klutchell/dnscrypt-proxy-docker) container
 - The maintainers of ad blocklists everywhere, in particular [Peter Lowe](https://pgl.yoyo.org/adservers/), whose blocklists I have been using for many years.
 
+## Contributing
+If you'd like to contribute, feel free to raise a PR. See the section below for a couple of things I'd like to sort out.
+
 ## TODO
 - Build automation
 - It'd be useful if it updated the blocking lists once a day or something. Unfortunately I haven't figured out how to get a cron job to run on a Chainguard image yet, and using a background script or something feels messy. For now it'll just need a weekly rebuild or something.
