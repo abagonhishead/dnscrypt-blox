@@ -11,13 +11,12 @@ This is just a small extension of the above container to provide blocklist gener
 ## Using it
 
 ### The default image
-You can see the blocklists that the pre-built image uses by [clicking here](blob/master/blocklist/domains-blocklist.conf). The URLs without a `#` at the start of the line are included in the dnscrypt-proxy configuration.
+You can see the blocklists that the pre-built image uses by [clicking here](blocklist/domains-blocklist.conf). The URLs without a `#` at the start of the line are included in the dnscrypt-proxy configuration.
 
-If you're happy with those lists, you can just pull the image for your platform and run it:
+If you're happy with those lists, you can just pull the image and run it:
 
 ```docker
-docker pull abagonhishead/dnscrypt-blox:latest
-docker run --restart unless-stopped -p 53:5053/tcp -p 53:5053/udp --name dnscrypt-proxy abagonhishead/dnscrypt-blox
+docker run --restart unless-stopped -p 53:5053/tcp -p 53:5053/udp --name dnscrypt-proxy abagonhishead/dnscrypt-blox:latest
 ```
 
 You can use your own configuration files if you like. Just make sure you always include the following directive in the `dnscrypt-proxy.toml` config file:
@@ -40,8 +39,8 @@ If you'd rather pick and choose your own lists or customise things a bit more, e
 
 ```bash
 # Clone the repo
-git clone https://github.com/klutchell/dnscrypt-proxy-docker.git
-cd dnscrypt-proxy-docker
+git clone https://github.com/abagonhishead/dnscrypt-blox.git
+cd dnscrypt-blox
 
 # ... change what you need to change ...
 
@@ -57,5 +56,14 @@ Full documentation can be found on the project wiki here: https://github.com/DNS
 
 For documentation on the dnscrypt-proxy-docker container, including how to use readiness/liveness probes, see Kyle Harding's repo here: https://github.com/klutchell/dnscrypt-proxy-docker
 
+## Acknowledgements
+- The developers of [DNSCrypt](https://github.com/DNSCrypt/) and [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy), which has been my DNS server of choice for 5 or 6 years now
+- Kyle Harding's [dnscrypt-proxy-docker](https://github.com/klutchell/dnscrypt-proxy-docker) container
+- The maintainers of ad blocklists everywhere, in particular [Peter Lowe](https://pgl.yoyo.org/adservers/), whose blocklists I have been using for many years.
+
+## Contributing
+If you'd like to contribute, feel free to raise a PR. See the section below for a couple of things I'd like to sort out.
+
 ## TODO
+- Build automation
 - It'd be useful if it updated the blocking lists once a day or something. Unfortunately I haven't figured out how to get a cron job to run on a Chainguard image yet, and using a background script or something feels messy. For now it'll just need a weekly rebuild or something.
