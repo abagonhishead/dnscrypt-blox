@@ -1,0 +1,5 @@
+=download.dnscrypt.info
+*.localdomain
+=localhost
+=msftconnecttest.com
+=raw.githubusercontent.com
