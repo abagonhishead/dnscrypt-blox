@@ -40,7 +40,7 @@ If you'd rather pick and choose your own lists or customise things a bit more, e
 
 ```bash
 # Clone the repo
-git clone https://github.com/abagonhishead/dnscrypt-blox
+git clone https://github.com/abagonhishead/dnscrypt-blox.git
 cd dnscrypt-blox
 
 # ... change what you need to change ...
