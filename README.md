@@ -40,8 +40,8 @@ If you'd rather pick and choose your own lists or customise things a bit more, e
 
 ```bash
 # Clone the repo
-git clone https://github.com/klutchell/dnscrypt-proxy-docker.git
-cd dnscrypt-proxy-docker
+git clone https://github.com/abagonhishead/dnscrypt-blox
+cd dnscrypt-blox
 
 # ... change what you need to change ...
 
