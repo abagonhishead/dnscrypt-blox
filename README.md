@@ -16,7 +16,6 @@ You can see the blocklists that the pre-built image uses by [clicking here](bloc
 If you're happy with those lists, you can just pull the image and run it:
 
 ```docker
-docker pull abagonhishead/dnscrypt-blox:latest
 docker run --restart unless-stopped -p 53:5053/tcp -p 53:5053/udp --name dnscrypt-proxy abagonhishead/dnscrypt-blox
 ```
 
