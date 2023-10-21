@@ -16,7 +16,7 @@ You can see the blocklists that the pre-built image uses by [clicking here](bloc
 If you're happy with those lists, you can just pull the image and run it:
 
 ```docker
-docker run --restart unless-stopped -p 53:5053/tcp -p 53:5053/udp --name dnscrypt-proxy abagonhishead/dnscrypt-blox
+docker run --restart unless-stopped -p 53:5053/tcp -p 53:5053/udp --name dnscrypt-proxy abagonhishead/dnscrypt-blox:latest
 ```
 
 You can use your own configuration files if you like. Just make sure you always include the following directive in the `dnscrypt-proxy.toml` config file:
