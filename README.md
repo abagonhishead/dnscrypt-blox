@@ -60,7 +60,7 @@ For documentation on the dnscrypt-proxy-docker container, including how to use r
 ## Acknowledgements
 - The developers of [DNSCrypt](https://github.com/DNSCrypt/) and [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy), which has been my DNS server of choice for 5 or 6 years now
 - Kyle Harding's [dnscrypt-proxy-docker](https://github.com/klutchell/dnscrypt-proxy-docker) container
-- The maintainers of ad blocklists everywhere, in particular [Peter Lowe)(https://pgl.yoyo.org/adservers/), whose blocklists I have been using for many years.
+- The maintainers of ad blocklists everywhere, in particular [Peter Lowe](https://pgl.yoyo.org/adservers/), whose blocklists I have been using for many years.
 
 ## TODO
 - Build automation
