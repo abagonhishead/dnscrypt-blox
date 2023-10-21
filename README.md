@@ -13,7 +13,7 @@ This is just a small extension of the above container to provide blocklist gener
 ### The default image
 You can see the blocklists that the pre-built image uses by [clicking here](blocklist/domains-blocklist.conf). The URLs without a `#` at the start of the line are included in the dnscrypt-proxy configuration.
 
-If you're happy with those lists, you can just pull the image for your platform and run it:
+If you're happy with those lists, you can just pull the image and run it:
 
 ```docker
 docker pull abagonhishead/dnscrypt-blox:latest
