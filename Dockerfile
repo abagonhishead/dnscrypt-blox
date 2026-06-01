@@ -4,7 +4,10 @@
 # Tag we pull generate-domains-blocklist.py from. Latest as of 2026-06-01.
 ARG DNSCRYPT_VERSION=2.1.16
 
-FROM python:3.13-slim AS blocklist-builder
+# Pin the builder to the build host's native arch ($BUILDPLATFORM): the blocklist
+# is a plain text file, identical on every target, so there's no reason to run the
+# generator under slow QEMU emulation for arm targets.
+FROM --platform=$BUILDPLATFORM python:3.13-slim AS blocklist-builder
 ARG DNSCRYPT_VERSION
 
 # Drop the docker-clean hook so apt keeps downloaded debs in the cache mount.
