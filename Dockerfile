@@ -11,7 +11,7 @@ RUN mkdir -p /config
 
 WORKDIR /build
 RUN echo "Building blocklist against files for v${DNSCRYPT_VERSION}"
-RUN curl -O https://raw.githubusercontent.com/DNSCrypt/dnscrypt-proxy/${DNSCRYPT_VERSION}/utils/generate-domains-blocklist/generate-domains-blocklist.py
+RUN curl -fLO https://raw.githubusercontent.com/DNSCrypt/dnscrypt-proxy/${DNSCRYPT_VERSION}/utils/generate-domains-blocklist/generate-domains-blocklist.py
 RUN python3 generate-domains-blocklist.py --progress --config domains-blocklist.conf --allowlist domains-allowlist.txt --time-restricted '' --output-file /config/blocked-names.txt
 
 # Extend the existing dnscrypt-proxy container with our config
