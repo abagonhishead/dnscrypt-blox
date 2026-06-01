@@ -133,7 +133,7 @@ keepalive = 30
 ## Multiple networks can be listed; they will be randomly chosen.
 ## These networks don't have to match your actual networks.
 
-edns_client_subnet = ['13.37.13.37/13', '37.13.37.13/13']
+# edns_client_subnet = ['13.37.13.37/13', '37.13.37.13/13']
 
 
 ## Response for blocked queries. Options are `refused`, `hinfo` (default) or
