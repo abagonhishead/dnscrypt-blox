@@ -1,8 +1,8 @@
 ﻿# Build the blocklist
+# The tag we'll get our version of generate-domains-blocklist.py from. Latest as of 01/06/2026
 ARG DNSCRYPT_VERSION=2.1.16
 FROM python:3.9.18-slim-bullseye AS blocklist-builder
 ARG DNSCRYPT_VERSION
-# The commit/tag/branch we'll get our version of generate-domains-blocklist.py from. Latest as of 21/10/2023
 
 RUN apt-get -qq update && apt-get install -qqy curl
 RUN mkdir -p /build
