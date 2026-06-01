@@ -6,7 +6,7 @@
 
 [dnscrypt-proxy-docker](https://github.com/klutchell/dnscrypt-proxy-docker) is a multi-architecture docker image of dnscrypt-proxy by Kyle Harding. Go buy him a beer, too!
 
-This is just a small extension of the above container to provide blocklist generation as part of the build process. It uses the `generate-domain-blocklists.py` Python script that comes with dnscrypt-proxy. Don't buy me a beer, because it didn't take me very long to do this -- I just wrote it for my home network and thought some people out there might find it useful.
+This is just a small extension of the above container to provide blocklist generation as part of the build process. It uses the `generate-domains-blocklist.py` Python script that comes with dnscrypt-proxy. Don't buy me a beer, because it didn't take me very long to do this -- I just wrote it for my home network and thought some people out there might find it useful.
 
 ## Using it
 
@@ -37,6 +37,8 @@ The image was intended to run on an arm64 box and a Raspberry Pi 4, so it contin
 ### Building it yourself
 If you'd rather pick and choose your own lists or customise things a bit more, e.g. maybe you want to include an extra blocklist, then you'll need to build the image yourself:
 
+The Dockerfile uses BuildKit cache mounts, so it needs to be built with BuildKit. Modern Docker enables BuildKit by default, but the examples below use `docker buildx build` to be explicit:
+
 ```bash
 # Clone the repo
 git clone https://github.com/abagonhishead/dnscrypt-blox.git
@@ -45,10 +47,16 @@ cd dnscrypt-blox
 # ... change what you need to change ...
 
 # Build the image
-docker build . --tag my-dnscrypt-proxy:latest
+docker buildx build . --tag my-dnscrypt-proxy:latest
 
 # Run the image
 docker run --restart unless-stopped -p 53:5053/tcp -p 53:5053/udp --name dnscrypt-proxy my-dnscrypt-proxy:latest
+```
+
+You can pin a different version of the dnscrypt-proxy base image and its bundled blocklist generator via the `DNSCRYPT_VERSION` build arg:
+
+```bash
+docker buildx build . --build-arg DNSCRYPT_VERSION=2.1.16 --tag my-dnscrypt-proxy:latest
 ```
 
 ## Further information
