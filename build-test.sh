@@ -55,6 +55,7 @@ for platform in "${PLATFORMS[@]}"; do
     echo "=============================================================="
 
     if docker buildx build \
+        --builder multiarch \
         "${NO_CACHE[@]}" \
         --platform "${platform}" \
         --output type=cacheonly \

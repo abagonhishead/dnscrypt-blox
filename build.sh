@@ -8,9 +8,9 @@
 # Pushing requires you to be logged in (`docker login`) as a user with write
 # access to the target repository.
 #
-# Requires a buildx builder that can emit foreign platforms (the docker-container
-# driver) plus QEMU binfmt handlers for the arm targets. See build-test.sh for
-# the one-time setup commands.
+# Requires a buildx builder named 'multiarch' that can emit foreign platforms 
+# (the docker-container driver) plus QEMU binfmt handlers for the arm targets. 
+# See build-test.sh for the one-time setup commands.
 
 set -euo pipefail
 
@@ -25,6 +25,7 @@ CONTEXT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo ">>> Building and pushing ${IMAGE}:${TAG} for ${PLATFORMS}"
 
 docker buildx build \
+    --builder multiarch \
     --platform "${PLATFORMS}" \
     --tag "${IMAGE}:${TAG}" \
     --push \
