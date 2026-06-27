@@ -1,1 +1,2 @@
 =packages.smallstep.com
+=gateway.scarf.sh
