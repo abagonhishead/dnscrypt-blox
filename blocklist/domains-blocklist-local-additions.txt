@@ -8,7 +8,7 @@ creatives.*
 oas.*
 oascentral.*
 telemetry.*
-tracker.*
+# tracker.*
 
 *.lan
 *.local

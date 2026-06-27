@@ -1,5 +1,12 @@
-=download.dnscrypt.info
-*.localdomain
-=localhost
-=msftconnecttest.com
-=raw.githubusercontent.com
+# Build-time allowlist for generate-domains-blocklist.py (--allowlist).
+#
+# Trusted-list syntax: ONE bare name per line, with NO '=' prefix. A name here
+# matches itself AND all of its subdomains, and any match is removed from the
+# generated blocked-names.txt. The runtime exact-match '=' syntax does NOT work
+# in this file -- that only applies to allowlist/allowed-names.txt. (Lines with
+# a leading '=' are silently ignored by the generator, so the entry does nothing.)
+download.dnscrypt.info
+localdomain
+localhost
+msftconnecttest.com
+raw.githubusercontent.com

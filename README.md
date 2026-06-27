@@ -59,6 +59,15 @@ You can pin a different version of the dnscrypt-proxy base image and its bundled
 docker buildx build . --build-arg DNSCRYPT_VERSION=2.1.16 --tag my-dnscrypt-proxy:latest
 ```
 
+#### `allowed-names.txt` vs. `domains-allowlist.txt`
+
+There are two files that can be used to 'allowlist' certain domains, so that dnscrypt-proxy returns their real-world records even if a blocklist would otherwise block them. They apply at different stages **and use different syntax**, so they are not interchangeable:
+
+- `blocklist/domains-allowlist.txt` -- applied at **build time**, by `generate-domains-blocklist.py --allowlist`. Any matching entry is dropped from the generated `blocked-names.txt`. It uses the generator's *trusted-list* syntax: bare names with **no `=` prefix**, where a name matches itself **and all of its subdomains**. Allowlisting `example.com` here therefore removes `example.com` *and* everything under it. (Globs use the `ads.*` form; a leading `*.` is treated as a literal, not a wildcard.)
+- `allowlist/allowed-names.txt` -- applied at **runtime** by dnscrypt-proxy, using its own pattern syntax (`=exact`, `*.subdomain`, etc.).
+
+Use the build-time list to drop whole domains (and their subtrees) before the blocklist is even built. Use the runtime list for the exceptions it can't express -- chiefly, allowing a single name while its apex stays blocked. For example, if `example.com` is blocked then dnscrypt-proxy blocks every subdomain too; removing `foo.example.com` from the build-time list would not help, because the `example.com` apex entry still matches it at runtime. To let `foo.example.com` through while keeping the rest of the zone blocked, add `=foo.example.com` to `allowlist/allowed-names.txt`.
+
 ## Further information
 Full documentation can be found on the project wiki here: https://github.com/DNSCrypt/dnscrypt-proxy/wiki
 
