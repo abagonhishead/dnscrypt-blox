@@ -64,6 +64,12 @@ Full documentation can be found on the project wiki here: https://github.com/DNS
 
 For documentation on the dnscrypt-proxy-docker container, including how to use readiness/liveness probes, see Kyle Harding's repo here: https://github.com/klutchell/dnscrypt-proxy-docker
 
+### Gotchas
+#### DNSSEC with allowlisted subdomains
+If you're running this behind a DNSSEC validating forwarder (e.g. unbound with DNSSEC enabled,) be aware that any domains in `allowlist/allowed-names.txt` that are subdomains of a blocked apex will need a `domain-insecure: "..."` entry (or equivalent) in your configuration file.
+
+One example of this is `packages.smallstep.com`, which has a `CNAME gateway.scarf.sh` record -- running behind a validating forwarder will cause the forwarder to query `DS` records for the apex (`scarf.sh`), but `scarf.sh` is blocked, so the `DS` record is 'forged' by dnscrypt-proxy. This will result in a `SERVFAIL` response from your forwarder.
+
 ## Acknowledgements
 - The developers of [DNSCrypt](https://github.com/DNSCrypt/) and [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy), which has been my DNS server of choice for 5 or 6 years now
 - Kyle Harding's [dnscrypt-proxy-docker](https://github.com/klutchell/dnscrypt-proxy-docker) container
