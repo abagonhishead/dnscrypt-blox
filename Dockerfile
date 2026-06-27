@@ -44,5 +44,6 @@ RUN sh patch-config.sh /config/dnscrypt-proxy.toml
 # Extend the existing dnscrypt-proxy image with our config + generated blocklist.
 FROM klutchell/dnscrypt-proxy:${DNSCRYPT_VERSION}
 COPY ./config /config
+COPY ./allowlist/allowed-names.txt /config/allowed-names.txt
 COPY --from=build-tools /config/blocked-names.txt /config/blocked-names.txt
 COPY --from=build-tools /config/dnscrypt-proxy.toml /config/dnscrypt-proxy.toml

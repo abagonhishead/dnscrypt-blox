@@ -16,7 +16,7 @@ config="${1:?usage: patch-config.sh <path-to-dnscrypt-proxy.toml>}"
 
 # Directives to enable. Each ships commented out in the stock config; the file
 # they point at is provided by this image (generated or vendored under /config).
-KEYS="blocked_names_file blocked_ips_file cloaking_rules"
+KEYS="blocked_names_file blocked_ips_file cloaking_rules allowed_names_file"
 
 for key in $KEYS; do
     active="^[[:space:]]*${key}[[:space:]]*="
